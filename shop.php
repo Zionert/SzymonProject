@@ -44,11 +44,11 @@
               </li>
               
               <li class="nav-item">
-                <a class="nav-link" href="shop.html">Shop</a>
+                <a class="nav-link" href="shop.php">Shop</a>
               </li>
 
               <li class="nav-item">
-                <a class="nav-link" href="contact.html">Contact us</a>
+                <a class="nav-link" href="contact.php">Contact us</a>
               </li>
 
               <li class="nav-item">
@@ -65,234 +65,127 @@
         <div class="container text-center mt-5 pb-5">
           <h3>Shop</h3>
           <hr>
-          <p>Here you can chekc out our products</p>
-        </div>
-        <div class="row mx-auto container-fluid">
-          <div onclick="window.location.href='single_product.php';" class="product text-center col-lg-3 col-md-4 col-sm-12">
-            <img class="img-fluid mb-3" src="assests/imgs/featured1.jpg"/>
-            <div class="star">
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
+          <p>Here you can check out our products</p>
+          
+          <!-- Search and Filter Section -->
+          <div class="row mb-4">
+            <div class="col-md-6">
+              <form action="" method="GET" class="d-flex">
+                <input type="text" name="search" class="form-control me-2" placeholder="Search products..." value="<?php echo isset($_GET['search']) ? htmlspecialchars($_GET['search']) : ''; ?>">
+                <button type="submit" class="btn btn-primary">Search</button>
+              </form>
             </div>
-            <h5 class="p-name">Sports Shoes</h5>
-            <h4 class="p-price">199.9 zł</h4>
-            <button class="buy-btn">Buy Now</button>
-          </div>
-          <div class="product text-center col-lg-3 col-md-4 col-sm-12">
-            <img class="img-fluid mb-3" src="assests/imgs/featured2.webp"/>
-            <div class="star">
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
+            <div class="col-md-6">
+              <form action="" method="GET" class="d-flex">
+                <select name="price_range" class="form-select me-2" onchange="this.form.submit()">
+                  <option value="">Price Range</option>
+                  <option value="0-100" <?php echo (isset($_GET['price_range']) && $_GET['price_range'] == '0-100') ? 'selected' : ''; ?>>0 - 100 zł</option>
+                  <option value="100-200" <?php echo (isset($_GET['price_range']) && $_GET['price_range'] == '100-200') ? 'selected' : ''; ?>>100 - 200 zł</option>
+                  <option value="200-300" <?php echo (isset($_GET['price_range']) && $_GET['price_range'] == '200-300') ? 'selected' : ''; ?>>200 - 300 zł</option>
+                  <option value="300+" <?php echo (isset($_GET['price_range']) && $_GET['price_range'] == '300+') ? 'selected' : ''; ?>>300+ zł</option>
+                </select>
+                <?php if(isset($_GET['search'])): ?>
+                  <input type="hidden" name="search" value="<?php echo htmlspecialchars($_GET['search']); ?>">
+                <?php endif; ?>
+              </form>
             </div>
-            <h5 class="p-name">Sports Shoes</h5>
-            <h4 class="p-price">199.9 zł</h4>
-            <button class="buy-btn">Buy Now</button>
-          </div>
-          <div class="product text-center col-lg-3 col-md-4 col-sm-12">
-            <img class="img-fluid mb-3" src="assests/imgs/featured3.webp"/>
-            <div class="star">
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-            </div>
-            <h5 class="p-name">Sports Shoes</h5>
-            <h4 class="p-price">199.9 zł</h4>
-            <button class="buy-btn">Buy Now</button>
-          </div>
-          <div class="product text-center col-lg-3 col-md-4 col-sm-12">
-            <img class="img-fluid mb-3" src="assests/imgs/featured4.jpg"/>
-            <div class="star">
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-            </div>
-            <h5 class="p-name">Sports Shoes</h5>
-            <h4 class="p-price">199.9 zł</h4>
-            <button class="buy-btn">Buy Now</button>
           </div>
         </div>
         <div class="row mx-auto container-fluid">
-          <div class="product text-center col-lg-3 col-md-4 col-sm-12">
-            <img class="img-fluid mb-3" src="assests/imgs/featured1.jpg"/>
-            <div class="star">
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-            </div>
-            <h5 class="p-name">Sports Shoes</h5>
-            <h4 class="p-price">199.9 zł</h4>
-            <button class="buy-btn">Buy Now</button>
-          </div>
-          <div class="product text-center col-lg-3 col-md-4 col-sm-12">
-            <img class="img-fluid mb-3" src="assests/imgs/featured2.webp"/>
-            <div class="star">
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-            </div>
-            <h5 class="p-name">Sports Shoes</h5>
-            <h4 class="p-price">199.9 zł</h4>
-            <button class="buy-btn">Buy Now</button>
-          </div>
-          <div class="product text-center col-lg-3 col-md-4 col-sm-12">
-            <img class="img-fluid mb-3" src="assests/imgs/featured3.webp"/>
-            <div class="star">
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-            </div>
-            <h5 class="p-name">Sports Shoes</h5>
-            <h4 class="p-price">199.9 zł</h4>
-            <button class="buy-btn">Buy Now</button>
-          </div>
-          <div class="product text-center col-lg-3 col-md-4 col-sm-12">
-            <img class="img-fluid mb-3" src="assests/imgs/featured4.jpg"/>
-            <div class="star">
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-            </div>
-            <h5 class="p-name">Sports Shoes</h5>
-            <h4 class="p-price">199.9 zł</h4>
-            <button class="buy-btn">Buy Now</button>
-          </div>
-        </div>
-        <div class="row mx-auto container-fluid">
-          <div class="product text-center col-lg-3 col-md-4 col-sm-12">
-            <img class="img-fluid mb-3" src="assests/imgs/featured1.jpg"/>
-            <div class="star">
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-            </div>
-            <h5 class="p-name">Sports Shoes</h5>
-            <h4 class="p-price">199.9 zł</h4>
-            <button class="buy-btn">Buy Now</button>
-          </div>
-          <div class="product text-center col-lg-3 col-md-4 col-sm-12">
-            <img class="img-fluid mb-3" src="assests/imgs/featured2.webp"/>
-            <div class="star">
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-            </div>
-            <h5 class="p-name">Sports Shoes</h5>
-            <h4 class="p-price">199.9 zł</h4>
-            <button class="buy-btn">Buy Now</button>
-          </div>
-          <div class="product text-center col-lg-3 col-md-4 col-sm-12">
-            <img class="img-fluid mb-3" src="assests/imgs/featured3.webp"/>
-            <div class="star">
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-            </div>
-            <h5 class="p-name">Sports Shoes</h5>
-            <h4 class="p-price">199.9 zł</h4>
-            <button class="buy-btn">Buy Now</button>
-          </div>
-          <div class="product text-center col-lg-3 col-md-4 col-sm-12">
-            <img class="img-fluid mb-3" src="assests/imgs/featured4.jpg"/>
-            <div class="star">
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-            </div>
-            <h5 class="p-name">Sports Shoes</h5>
-            <h4 class="p-price">199.9 zł</h4>
-            <button class="buy-btn">Buy Now</button>
-          </div>
-        </div>
-        <div class="row mx-auto container-fluid">
-          <div class="product text-center col-lg-3 col-md-4 col-sm-12">
-            <img class="img-fluid mb-3" src="assests/imgs/featured1.jpg"/>
-            <div class="star">
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-            </div>
-            <h5 class="p-name">Sports Shoes</h5>
-            <h4 class="p-price">199.9 zł</h4>
-            <button class="buy-btn">Buy Now</button>
-          </div>
-          <div class="product text-center col-lg-3 col-md-4 col-sm-12">
-            <img class="img-fluid mb-3" src="assests/imgs/featured2.webp"/>
-            <div class="star">
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-            </div>
-            <h5 class="p-name">Sports Shoes</h5>
-            <h4 class="p-price">199.9 zł</h4>
-            <button class="buy-btn">Buy Now</button>
-          </div>
-          <div class="product text-center col-lg-3 col-md-4 col-sm-12">
-            <img class="img-fluid mb-3" src="assests/imgs/featured3.webp"/>
-            <div class="star">
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-            </div>
-            <h5 class="p-name">Sports Shoes</h5>
-            <h4 class="p-price">199.9 zł</h4>
-            <button class="buy-btn">Buy Now</button>
-          </div>
-          <div class="product text-center col-lg-3 col-md-4 col-sm-12">
-            <img class="img-fluid mb-3" src="assests/imgs/featured4.jpg"/>
-            <div class="star">
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-            </div>
-            <h5 class="p-name">Sports Shoes</h5>
-            <h4 class="p-price">199.9 zł</h4>
-            <button class="buy-btn">Buy Now</button>
-          </div>
+          <?php
+          // Include database connection
+          require_once 'server/connection.php';
 
-          <nav aria-label="Page navigation example">
-            <ul class="pagination mt-5">
-              <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-              <li class="page-item"><a class="page-link" href="#">1</a></li>
-              <li class="page-item"><a class="page-link" href="#">2</a></li>
-              <li class="page-item"><a class="page-link" href="#">3</a></li>
-              <li class="page-item"><a class="page-link" href="#">Next</a></li>
-            </ul>
-          </nav>
+          // Set items per page and get current page
+          $items_per_page = 16;
+          $current_page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+          $offset = ($current_page - 1) * $items_per_page;
+
+          // Build the query with search and price filter
+          $query = "SELECT * FROM products WHERE 1=1";
+          
+          if (isset($_GET['search']) && !empty($_GET['search'])) {
+              $search = mysqli_real_escape_string($conn, $_GET['search']);
+              $query .= " AND product_name LIKE '%$search%'";
+          }
+
+          if (isset($_GET['price_range']) && !empty($_GET['price_range'])) {
+              $range = $_GET['price_range'];
+              switch ($range) {
+                  case '0-100':
+                      $query .= " AND product_price <= 100";
+                      break;
+                  case '100-200':
+                      $query .= " AND product_price > 100 AND product_price <= 200";
+                      break;
+                  case '200-300':
+                      $query .= " AND product_price > 200 AND product_price <= 300";
+                      break;
+                  case '300+':
+                      $query .= " AND product_price > 300";
+                      break;
+              }
+          }
+
+          // Get total number of products for pagination
+          $total_query = $query;
+          $total_result = mysqli_query($conn, $total_query);
+          $total_products = mysqli_num_rows($total_result);
+          $total_pages = ceil($total_products / $items_per_page);
+
+          // Add pagination to the query
+          $query .= " LIMIT $offset, $items_per_page";
+          
+          // Execute the query
+          $result = mysqli_query($conn, $query);
+
+          // Display products
+          if (mysqli_num_rows($result) > 0) {
+              while ($row = mysqli_fetch_assoc($result)) {
+                  ?>
+                  <div class="product text-center col-lg-3 col-md-4 col-sm-12">
+                      <img class="img-fluid mb-3" src="assests/imgs/<?php echo $row['product_image']; ?>"/>
+                      <div class="star">
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                      </div>
+                      <h5 class="p-name"><?php echo $row['product_name']; ?></h5>
+                      <h4 class="p-price"><?php echo number_format($row['product_price'], 2); ?> zł</h4>
+                      <a href="single_product.php?product_id=<?php echo $row['product_id']; ?>"><button class="buy-btn">Buy Now</button></a>
+                  </div>
+                  <?php
+              }
+          } else {
+              echo "<div class='col-12 text-center'><p>No products found.</p></div>";
+          }
+          ?>
         </div>
+
+        <!-- Pagination -->
+        <nav aria-label="Page navigation" class="mt-4">
+            <ul class="pagination justify-content-center">
+                <?php if ($current_page > 1): ?>
+                    <li class="page-item">
+                        <a class="page-link" href="?page=<?php echo $current_page - 1; ?><?php echo isset($_GET['search']) ? '&search=' . urlencode($_GET['search']) : ''; ?><?php echo isset($_GET['price_range']) ? '&price_range=' . urlencode($_GET['price_range']) : ''; ?>">Previous</a>
+                    </li>
+                <?php endif; ?>
+
+                <?php for ($i = 1; $i <= $total_pages; $i++): ?>
+                    <li class="page-item <?php echo $i == $current_page ? 'active' : ''; ?>">
+                        <a class="page-link" href="?page=<?php echo $i; ?><?php echo isset($_GET['search']) ? '&search=' . urlencode($_GET['search']) : ''; ?><?php echo isset($_GET['price_range']) ? '&price_range=' . urlencode($_GET['price_range']) : ''; ?>"><?php echo $i; ?></a>
+                    </li>
+                <?php endfor; ?>
+
+                <?php if ($current_page < $total_pages): ?>
+                    <li class="page-item">
+                        <a class="page-link" href="?page=<?php echo $current_page + 1; ?><?php echo isset($_GET['search']) ? '&search=' . urlencode($_GET['search']) : ''; ?><?php echo isset($_GET['price_range']) ? '&price_range=' . urlencode($_GET['price_range']) : ''; ?>">Next</a>
+                    </li>
+                <?php endif; ?>
+            </ul>
+        </nav>
     </section>
 
     <!--Footer-->
@@ -331,8 +224,8 @@
           </div>
         </div>
       </div>
-
     </footer>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
 </body>
 </html>

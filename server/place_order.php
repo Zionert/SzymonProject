@@ -36,9 +36,13 @@ if(isset($_POST['place_order'])) {
         $stmt1->execute();
     }
 
+    // Set session variables for payment.php
+    $_SESSION['order_id'] = $order_id;
+    $_SESSION['total'] = $order_cost;
 
-    header('location: ../payment.php?order_status=order placed successfully');
-    
+    // Redirect to payment.php
+    header('location: ../payment.php');
+    exit();
 
 } else {
 

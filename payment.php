@@ -1,16 +1,30 @@
 <?php 
 
   session_start();
+  require_once 'server/connection.php';
 
+  // Only check for order_id
+  if (!isset($_SESSION['order_id'])) {
+    header('Location: account.php?error=invalid_payment');
+    exit();
+  }
+
+  // Fetch the order total from the database
+  $order_id = $_SESSION['order_id'];
+  $stmt = $conn->prepare("SELECT order_cost FROM orders WHERE order_id = ?");
+  $stmt->bind_param("i", $order_id);
+  $stmt->execute();
+  $result = $stmt->get_result();
+  $order = $result->fetch_assoc();
+  $order_total = $order ? $order['order_cost'] : 0;
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
+    <title>Payment</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
@@ -33,11 +47,11 @@
               </li>
               
               <li class="nav-item">
-                <a class="nav-link" href="shop.html">Shop</a>
+                <a class="nav-link" href="shop.php">Shop</a>
               </li>
 
               <li class="nav-item">
-                <a class="nav-link" href="contact.html">Contact us</a>
+                <a class="nav-link" href="contact.php">Contact us</a>
               </li>
 
               <li class="nav-item">
@@ -58,12 +72,26 @@
             <hr class="mx-auto">
         </div>
         <div class="mx-auto container text-center">
-            <p><?php echo $_GET['order_status']; ?></p>
-            <p>Total payment: zł <?php echo $_SESSION['total']; ?></p>
-            <input class="btn btn-primary" value="Pay" type="submit" />
+            <?php if(isset($_GET['order_status'])) { ?>
+                <p><?php echo $_GET['order_status']; ?></p>
+            <?php } ?>
+            <p>Total payment: zł <?php echo $order_total; ?></p>
+            <form action="place_order.php" method="POST">
+                <input type="hidden" name="order_id" value="<?php echo $_SESSION['order_id']; ?>">
+                <input class="btn btn-primary" type="submit" value="Pay Now"/>
+            </form>
+
+            <div id="paypal-button-container"></div>
+            <p id="result-message"></p>
         </div>
     </section>
 
+
+    <script
+            src="https://www.paypal.com/sdk/js?client-id=AZ4A_vzqRXSnlKZ4b2pSkAwfJMlT2H4xlu0O0DccKWLxJJ-adZt_6kX_XBGX8LjfFOFzfzAgGFFnW5iE&buyer-country=PL&currency=PLN&components=buttons&enable-funding=venmo,paylater,card"
+            data-sdk-integration-source="developer-studio"
+        ></script>
+    <script src="paypal.js"></script>
 
 
     <footer   footer class="mt-5 py-2">

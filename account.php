@@ -56,6 +56,13 @@
     
   }
 
+  $order_id = $_SESSION['order_id'];
+  $stmt = $conn->prepare("SELECT order_cost FROM orders WHERE order_id = ?");
+  $stmt->bind_param("i", $order_id);
+  $stmt->execute();
+  $result = $stmt->get_result();
+  $order = $result->fetch_assoc();
+  $order_total = $order ? $order['order_cost'] : 0;
 
 ?>
 
@@ -90,11 +97,11 @@
               </li>
               
               <li class="nav-item">
-                <a class="nav-link" href="shop.html">Shop</a>
+                <a class="nav-link" href="shop.php">Shop</a>
               </li>
 
               <li class="nav-item">
-                <a class="nav-link" href="contact.html">Contact us</a>
+                <a class="nav-link" href="contact.php">Contact us</a>
               </li>
 
               <li class="nav-item">
@@ -154,6 +161,29 @@
             <hr>
         </div>
 
+        <div class="container mt-5">
+            <h2 class="text-center">Your Orders</h2>
+            <hr>
+            <?php if(isset($_GET['error'])) { ?>
+                <div class="alert alert-danger text-center" role="alert">
+                    <?php 
+                        switch($_GET['error']) {
+                            case 'invalid_payment':
+                                echo 'Invalid payment attempt. Please try again.';
+                                break;
+                            case 'invalid_order':
+                                echo 'Invalid order. Please try again.';
+                                break;
+                            case 'not_logged_in':
+                                echo 'Please log in to access this page.';
+                                break;
+                            default:
+                                echo 'An error occurred. Please try again.';
+                        }
+                    ?>
+                </div>
+            <?php } ?>
+        </div>
 
         <table class="mt-5 pt-5">
             <tr>

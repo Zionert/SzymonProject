@@ -79,19 +79,20 @@
 
   function calculateTotalCart() {
     $total = 0;
-
-    foreach($_SESSION['cart'] as $key => $value) {
-      $product = $_SESSION['cart'][$key];
-
-      $price = $product['product_price'];
-      $quantity = $product['product_quantity'];
-      $total = $total + ($price * $quantity);
+    if (isset($_SESSION['cart']) && !empty($_SESSION['cart'])) {
+        foreach($_SESSION['cart'] as $key => $value) {
+            $product = $_SESSION['cart'][$key];
+            $price = $product['product_price'];
+            $quantity = $product['product_quantity'];
+            $total += ($price * $quantity);
+        }
     }
-
     $_SESSION['total'] = $total;
-
   }
 
+  if (isset($_SESSION['cart']) && !empty($_SESSION['cart'])) {
+    calculateTotalCart();
+  }
 
 ?>
 
@@ -125,11 +126,11 @@
               </li>
               
               <li class="nav-item">
-                <a class="nav-link" href="shop.html">Shop</a>
+                <a class="nav-link" href="shop.php">Shop</a>
               </li>
 
               <li class="nav-item">
-                <a class="nav-link" href="contact.html">Contact us</a>
+                <a class="nav-link" href="contact.php">Contact us</a>
               </li>
 
               <li class="nav-item">
@@ -195,7 +196,7 @@
             <table>
                 <tr>
                     <td>Total</td>
-                    <td>zł <?php echo $_SESSION['total']; ?></td>
+                    <td>zł <?php echo isset($_SESSION['total']) ? $_SESSION['total'] : 0; ?></td>
                 </tr>
             </table>
         </div>

@@ -44,11 +44,11 @@ if(isset($_GET['product_id'])) {
               </li>
               
               <li class="nav-item">
-                <a class="nav-link" href="shop.html">Shop</a>
+                <a class="nav-link" href="shop.php">Shop</a>
               </li>
 
               <li class="nav-item">
-                <a class="nav-link" href="contact.html">Contact us</a>
+                <a class="nav-link" href="contact.php">Contact us</a>
               </li>
 
               <li class="nav-item">
@@ -109,68 +109,7 @@ if(isset($_GET['product_id'])) {
         </div>
     </section>
 
-    <!--Featured-->
-    <section id="related-products" class="my-5 pb-5">
-        <div class="container text-center mt-5 pb-5">
-          <h3>Related Products</h3>
-          <hr class="mx-auto">
-        </div>
-        <div class="row mx-auto container-fluid">
-          <div class="product text-center col-lg-3 col-md-4 col-sm-12">
-            <img class="img-fluid mb-3" src="assests/imgs/featured1.jpg"/>
-            <div class="star">
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-            </div>
-            <h5 class="p-name">Sports Shoes</h5>
-            <h4 class="p-price">199.9 zł</h4>
-            <button class="buy-btn">Buy Now</button>
-          </div>
-          <div class="product text-center col-lg-3 col-md-4 col-sm-12">
-            <img class="img-fluid mb-3" src="assests/imgs/featured2.webp"/>
-            <div class="star">
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-            </div>
-            <h5 class="p-name">Sports Shoes</h5>
-            <h4 class="p-price">199.9 zł</h4>
-            <button class="buy-btn">Buy Now</button>
-          </div>
-          <div class="product text-center col-lg-3 col-md-4 col-sm-12">
-            <img class="img-fluid mb-3" src="assests/imgs/featured3.webp"/>
-            <div class="star">
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-            </div>
-            <h5 class="p-name">Sports Shoes</h5>
-            <h4 class="p-price">199.9 zł</h4>
-            <button class="buy-btn">Buy Now</button>
-          </div>
-          <div class="product text-center col-lg-3 col-md-4 col-sm-12">
-            <img class="img-fluid mb-3" src="assests/imgs/featured4.jpg"/>
-            <div class="star">
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-            </div>
-            <h5 class="p-name">Sports Shoes</h5>
-            <h4 class="p-price">199.9 zł</h4>
-            <button class="buy-btn">Buy Now</button>
-          </div>
-        </div>
-      </section>
-
+    
     <footer class="mt-5 py-2">
       <div class="container text-center pt-5">
         <div class="row justify-content-center">

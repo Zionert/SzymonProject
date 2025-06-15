@@ -10,13 +10,13 @@
         $stmt->execute();
         $order_details = $stmt->get_result();
 
-        // Fetch order status
-        $status_stmt = $conn->prepare("SELECT order_status FROM orders WHERE order_id = ?");
+        $status_stmt = $conn->prepare("SELECT order_status, order_cost FROM orders WHERE order_id = ?");
         $status_stmt->bind_param('i', $order_id);
         $status_stmt->execute();
         $status_result = $status_stmt->get_result();
         $order_data = $status_result->fetch_assoc();
         $order_status = $order_data['order_status'];
+        $order_cost = $order_data['order_cost'];
 
     } else {
         header('location: account.php');
@@ -47,8 +47,12 @@
         <div class="collapse navbar-collapse nav-buttons" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item"><a class="nav-link" href="index.php">Home</a></li>
-                <li class="nav-item"><a class="nav-link" href="shop.html">Shop</a></li>
-                <li class="nav-item"><a class="nav-link" href="contact.html">Contact us</a></li>
+                <li class="nav-item">
+                    <a class="nav-link" href="shop.php">Shop</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="contact.php">Contact us</a>
+                </li>
                 <li class="nav-item">
                     <a href="cart.php"><i class="fa-solid fa-bag-shopping"></i></a>
                     <a href="account.php"><i class="fa-solid fa-user"></i></a>
@@ -87,7 +91,9 @@
     </table>    
 
     <?php if ($order_status === "not paid") { ?>
-        <form>
+        <form action="payment.php" method="POST">
+            <input type="hidden" name="order_id" value="<?php echo $order_id; ?>">
+            <input type="hidden" name="order_cost" value="<?php echo $order_cost; ?>">
             <input type="submit" class="btn btn-primary d-block mx-auto" value="Pay Now"/>  
         </form>
     <?php } ?>
